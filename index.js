@@ -1,7 +1,6 @@
 var createLayout = require('layout-bmfont-text')
 var inherits = require('inherits')
 var createIndices = require('quad-indices')
-var buffer = require('three-buffer-vertex-data')
 var assign = require('object-assign')
 
 var vertices = require('./lib/vertices')

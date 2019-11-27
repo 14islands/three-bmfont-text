@@ -35,6 +35,8 @@ function start (font, texture) {
     flipY: texture.flipY
   })
 
+  geom.setAttribute( 'line', new BufferAttribute());
+
   var material = new THREE.RawShaderMaterial({
     vertexShader: glslify(__dirname + '/shaders/fx.vert'),
     fragmentShader: glslify(__dirname + '/shaders/fx.frag'),
@@ -44,9 +46,7 @@ function start (font, texture) {
       map: { type: 't', value: texture },
       color: { type: 'c', value: new THREE.Color('#000') }
     },
-    attributes: { // not needed in > ThreeJS r72
-      line: { type: 'f', value: 0 }
-    },
+
     transparent: true,
     side: THREE.DoubleSide,
     depthTest: false
