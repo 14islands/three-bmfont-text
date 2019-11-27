@@ -71,11 +71,11 @@ TextGeometry.prototype.update = function (opt) {
     type: 'uint16',
     count: glyphs.length
   })
-
   // update vertex data
-  buffer.index(this, indices, 1, 'uint16')
-  buffer.attr(this, 'position', positions, 2)
-  buffer.attr(this, 'uv', uvs, 2)
+
+  this.setIndex(new THREE.BufferAttribute(indices, 1));
+  this.setAttribute('position', new THREE.BufferAttribute(positions, 2));
+  this.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
   // update multipage data
   if (!opt.multipage && 'page' in this.attributes) {
@@ -84,7 +84,7 @@ TextGeometry.prototype.update = function (opt) {
   } else if (opt.multipage) {
     var pages = vertices.pages(glyphs)
     // enable multipage rendering
-    buffer.attr(this, 'page', pages, 1)
+    this.setAttribute('page', new THREE.BufferAttribute(pages, 1));
   }
 }
 

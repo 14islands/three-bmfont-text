@@ -6,7 +6,7 @@
 
 global.THREE = require('three')
 var quote = require('sun-tzu-quotes')
-var buffer = require('three-buffer-vertex-data')
+//var buffer = require('three-buffer-vertex-data')
 var createOrbitViewer = require('three-orbit-viewer')(THREE)
 var createBackground = require('three-vignette-background')
 var createText = require('../')
@@ -107,7 +107,7 @@ function start (font, texture) {
     }, [])
 
     // update the "line" vertex attribute
-    buffer.attr(geom, 'line', lineData, 1)
+    geom.setAttribute('line', new THREE.BufferAttribute( new Float32Array(lineData), 1));
 
     // center the text
     var layout = geom.layout
